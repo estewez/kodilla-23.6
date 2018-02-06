@@ -4,13 +4,9 @@ import { deleteLaneRequest, updateLaneRequest, editLane } from './LaneActions';
 import { createNoteRequest } from '../Note/NoteActions';
 
 
-const mapStateToProps = (state, ownProps) => {
-  return {
-    laneNotes: ownProps.lane.notes.map(noteId => {
-      return { ...state.notes[noteId] };
-    }),
-  };
-};
+const mapStateToProps = (state, ownProps) => ({
+  laneNotes: ownProps.lane.notes.map(noteId => state.notes[noteId]),
+});
 
 const mapDispatchToProps = {
   editLane,
